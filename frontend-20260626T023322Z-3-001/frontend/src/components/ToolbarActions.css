@@ -1,0 +1,45 @@
+.vs-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--vs-space-2);
+  flex-shrink: 0;
+}
+
+.vs-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--vs-text);
+  background: var(--vs-surface);
+  border: 1px solid var(--vs-border);
+  border-radius: var(--vs-radius-md);
+  cursor: pointer;
+  transition: border-color var(--vs-transition), background var(--vs-transition),
+    box-shadow var(--vs-transition);
+}
+
+.vs-action:hover {
+  border-color: var(--vs-primary);
+  background: var(--vs-primary-soft);
+}
+
+.vs-action--primary {
+  color: #fff;
+  background: var(--vs-primary);
+  border-color: var(--vs-primary);
+}
+
+.vs-action--primary:hover {
+  background: var(--vs-primary-strong);
+  border-color: var(--vs-primary-strong);
+}
+
+@media (max-width: 1100px) {
+  .vs-action span {
+    display: none;
+  }
+}

@@ -1,0 +1,98 @@
+/* ui.css — canvas chrome and ReactFlow overrides. */
+
+.vs-canvas {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.vs-canvas .react-flow {
+  background: var(--vs-bg);
+}
+
+/* Edges */
+.vs-canvas .react-flow__edge-path {
+  stroke: var(--vs-border-strong);
+  stroke-width: 2;
+}
+
+.vs-canvas .react-flow__edge.selected .react-flow__edge-path,
+.vs-canvas .react-flow__edge:hover .react-flow__edge-path {
+  stroke: var(--vs-primary);
+}
+
+.vs-canvas .react-flow__connectionline path {
+  stroke: var(--vs-primary);
+  stroke-width: 2;
+}
+
+/* Controls */
+.vs-canvas .react-flow__controls {
+  border-radius: var(--vs-radius-md);
+  box-shadow: var(--vs-shadow-md);
+  overflow: hidden;
+  border: 1px solid var(--vs-border);
+}
+
+.vs-canvas .react-flow__controls-button {
+  background: var(--vs-surface);
+  border-bottom: 1px solid var(--vs-border);
+  color: var(--vs-text);
+}
+
+.vs-canvas .react-flow__controls-button:hover {
+  background: var(--vs-primary-soft);
+}
+
+/* Control icons inherit the button text color so they work in dark mode. */
+.vs-canvas .react-flow__controls-button svg {
+  fill: currentColor;
+}
+
+/* Minimap */
+.vs-canvas .react-flow__minimap {
+  border-radius: var(--vs-radius-md);
+  box-shadow: var(--vs-shadow-md);
+  border: 1px solid var(--vs-border);
+  overflow: hidden;
+  background: var(--vs-surface);
+}
+
+/* The mask (area outside the viewport) should match the canvas, not stay white. */
+.vs-canvas .react-flow__minimap-mask {
+  fill: color-mix(in srgb, var(--vs-bg) 60%, transparent);
+}
+
+/* Empty state */
+.vs-canvas__empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.vs-canvas__empty-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  text-align: center;
+  padding: 22px 28px;
+  border: 1.5px dashed var(--vs-border-strong);
+  border-radius: var(--vs-radius-lg);
+  background: color-mix(in srgb, var(--vs-surface) 70%, transparent);
+}
+
+.vs-canvas__empty-card strong {
+  font-size: 15px;
+  color: var(--vs-text);
+}
+
+.vs-canvas__empty-card span {
+  font-size: 13px;
+  color: var(--vs-text-muted);
+  max-width: 260px;
+}

@@ -1,0 +1,90 @@
+.vs-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vs-space-1);
+}
+
+.vs-field--inline {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vs-field__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--vs-text-muted);
+}
+
+.vs-field__control {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--vs-text);
+  background: var(--vs-surface);
+  border: 1px solid var(--vs-border);
+  border-radius: var(--vs-radius-sm);
+  outline: none;
+  transition: border-color var(--vs-transition), box-shadow var(--vs-transition);
+}
+
+.vs-field__control:hover {
+  border-color: var(--vs-border-strong);
+}
+
+.vs-field__control:focus {
+  border-color: var(--vs-primary);
+  box-shadow: 0 0 0 3px var(--vs-primary-soft);
+}
+
+.vs-field__control--area {
+  resize: vertical;
+  min-height: 56px;
+  line-height: 1.45;
+}
+
+/* Toggle switch */
+.vs-field__switch {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.vs-field__switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.vs-field__switch-track {
+  width: 36px;
+  height: 20px;
+  border-radius: var(--vs-radius-pill);
+  background: var(--vs-border-strong);
+  transition: background var(--vs-transition);
+}
+
+.vs-field__switch-track::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: var(--vs-shadow-sm);
+  transition: transform var(--vs-transition);
+}
+
+.vs-field__switch input:checked + .vs-field__switch-track {
+  background: var(--vs-primary);
+}
+
+.vs-field__switch input:checked + .vs-field__switch-track::after {
+  transform: translateX(16px);
+}

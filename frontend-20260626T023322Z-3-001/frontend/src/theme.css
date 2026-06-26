@@ -1,0 +1,129 @@
+/* theme.css
+ * Global design tokens for the VectorShift pipeline builder.
+ * Centralizing colors, spacing, radii, and shadows here lets us
+ * restyle every node and control from a single place (Part 2).
+ */
+
+:root {
+  /* Brand */
+  --vs-primary: #6366f1;
+  --vs-primary-strong: #4f46e5;
+  --vs-primary-soft: #eef2ff;
+  --vs-primary-contrast: #ffffff;
+
+  /* Canvas / surfaces */
+  --vs-bg: #f5f6fb;
+  --vs-bg-grid: #d8dcea;
+  --vs-surface: #ffffff;
+  --vs-surface-muted: #f8f9fc;
+
+  /* Text */
+  --vs-text: #1c2536;
+  --vs-text-muted: #6b7280;
+  --vs-text-subtle: #9ca3af;
+
+  /* Borders */
+  --vs-border: #e5e7eb;
+  --vs-border-strong: #d1d5db;
+
+  /* Feedback */
+  --vs-success: #10b981;
+  --vs-danger: #ef4444;
+  --vs-warning: #f59e0b;
+
+  /* Category accents — one source of truth, consumed by node configs */
+  --vs-cat-input: #10b981;
+  --vs-cat-output: #f43f5e;
+  --vs-cat-llm: #8b5cf6;
+  --vs-cat-text: #f59e0b;
+  --vs-cat-logic: #0ea5e9;
+  --vs-cat-data: #14b8a6;
+  --vs-cat-integration: #6366f1;
+  --vs-cat-knowledge: #db2777;
+  --vs-cat-trigger: #ea580c;
+
+  /* Spacing scale */
+  --vs-space-1: 4px;
+  --vs-space-2: 8px;
+  --vs-space-3: 12px;
+  --vs-space-4: 16px;
+  --vs-space-5: 24px;
+
+  /* Radii */
+  --vs-radius-sm: 6px;
+  --vs-radius-md: 10px;
+  --vs-radius-lg: 14px;
+  --vs-radius-pill: 999px;
+
+  /* Elevation */
+  --vs-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --vs-shadow-md: 0 4px 12px rgba(16, 24, 40, 0.10);
+  --vs-shadow-lg: 0 12px 28px rgba(16, 24, 40, 0.16);
+
+  /* Typography */
+  --vs-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+  --vs-font-mono: 'SFMono-Regular', ui-monospace, 'Cascadia Code', Menlo,
+    Consolas, monospace;
+
+  /* Motion */
+  --vs-transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--vs-font);
+  color: var(--vs-text);
+  background: var(--vs-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: var(--vs-font-mono);
+}
+
+/* -------------------------------------------------------------------------
+ * Dark theme (N8N-inspired): deep slate canvas, lifted node cards, accents
+ * that pop. Activated by data-theme="dark" on <html>. Because every surface
+ * reads from these tokens, the whole app re-skins from this one block.
+ * ---------------------------------------------------------------------- */
+:root[data-theme='dark'] {
+  --vs-bg: #14151c;
+  --vs-bg-grid: #2b2d3b;
+  --vs-surface: #1d1e29;
+  --vs-surface-muted: #262734;
+
+  --vs-text: #e8e9f1;
+  --vs-text-muted: #9ca0b3;
+  --vs-text-subtle: #6b6f84;
+
+  --vs-border: #2e3042;
+  --vs-border-strong: #3d4057;
+
+  --vs-primary-soft: #262a4d;
+
+  --vs-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.40);
+  --vs-shadow-md: 0 6px 16px rgba(0, 0, 0, 0.48);
+  --vs-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.60);
+}
+
+/* Smooth the switch between themes. */
+.vs-app,
+.vs-node,
+.vs-chip,
+.vs-action,
+.vs-field__control {
+  transition: background-color var(--vs-transition), border-color var(--vs-transition),
+    color var(--vs-transition);
+}

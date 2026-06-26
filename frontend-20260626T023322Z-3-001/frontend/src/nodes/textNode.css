@@ -1,0 +1,7 @@
+.vs-text-node__input {
+  font-family: var(--vs-font-mono);
+  font-size: 12.5px;
+  max-height: 320px;
+  overflow-y: auto;
+  transition: none; /* height is set imperatively; avoid jitter */
+}

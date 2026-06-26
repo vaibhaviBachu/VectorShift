@@ -1,0 +1,21 @@
+.vs-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--vs-border);
+  border-radius: var(--vs-radius-md);
+  background: var(--vs-surface);
+  color: var(--vs-text-muted);
+  font-size: 17px;
+  cursor: pointer;
+  transition: border-color var(--vs-transition), color var(--vs-transition),
+    background var(--vs-transition);
+}
+
+.vs-theme-toggle:hover {
+  border-color: var(--vs-primary);
+  color: var(--vs-primary);
+  background: var(--vs-primary-soft);
+}
