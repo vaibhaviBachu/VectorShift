@@ -1,0 +1,25 @@
+# Run the whole app (frontend + backend) with one command:
+#
+#     docker compose up --build
+#
+# Then open http://localhost:8095  (API runs at http://localhost:8001)
+
+services:
+  backend:
+    build: ./backend-20260626T023302Z-3-001/backend
+    ports:
+      - "8001:8001"
+    environment:
+      # Allow the dockerized frontend origin to call the API.
+      - ALLOWED_ORIGINS=http://localhost:8095
+
+  frontend:
+    build:
+      context: ./frontend-20260626T023322Z-3-001/frontend
+      args:
+        # Browser runs on the host, so it reaches the API via the published port.
+        REACT_APP_API_BASE: http://localhost:8001
+    ports:
+      - "8095:80"
+    depends_on:
+      - backend
