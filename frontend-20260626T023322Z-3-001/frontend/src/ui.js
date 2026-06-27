@@ -124,6 +124,7 @@ export const PipelineUI = () => {
         onDragOver={onDragOver}
         onInit={setReactFlowInstance}
         nodeTypes={nodeTypes}
+        deleteKeyCode={['Delete', 'Backspace']}
         proOptions={proOptions}
         snapGrid={[gridSize, gridSize]}
         connectionLineType="smoothstep"

@@ -60,6 +60,16 @@ export const useStore = create(
         });
       },
 
+      // Remove a single node and any edges connected to it.
+      removeNode: (nodeId) => {
+        set({
+          nodes: get().nodes.filter((node) => node.id !== nodeId),
+          edges: get().edges.filter(
+            (edge) => edge.source !== nodeId && edge.target !== nodeId
+          ),
+        });
+      },
+
       // Replace the whole graph (used by import / load-from-server).
       setGraph: (nodes = [], edges = []) => {
         // Rebuild the per-type id counters so new nodes keep unique ids.

@@ -9,6 +9,8 @@
 // custom `children` and compute their handles dynamically.
 
 import { Handle, Position } from 'reactflow';
+import { FiTrash2 } from 'react-icons/fi';
+import { useStore } from '../store';
 import { NodeField } from './NodeField';
 import './BaseNode.css';
 
@@ -48,6 +50,7 @@ export const BaseNode = ({
   children,
 }) => {
   const accent = ACCENTS[category] || ACCENTS.integration;
+  const removeNode = useStore((state) => state.removeNode);
 
   // Group handles per side so we can lay each side out independently.
   const groups = handles.reduce((acc, handle) => {
@@ -97,6 +100,17 @@ export const BaseNode = ({
           <span className="vs-node__title">{title}</span>
           {subtitle && <span className="vs-node__subtitle">{subtitle}</span>}
         </div>
+        <button
+          className="vs-node__delete nodrag nopan"
+          title="Delete node"
+          aria-label="Delete node"
+          onClick={(e) => {
+            e.stopPropagation();
+            removeNode(id);
+          }}
+        >
+          <FiTrash2 />
+        </button>
       </header>
 
       {(fields.length > 0 || children) && (
