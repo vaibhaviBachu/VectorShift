@@ -1,9 +1,9 @@
-// toolbar.js — top app bar with a grouped, draggable node palette.
+// toolbar.js — slim top app bar: brand, an "Add Node" dropdown palette,
+// and the pipeline file/theme actions.
 
-import { DraggableNode } from './draggableNode';
+import { NodePalette } from './components/NodePalette';
 import { ToolbarActions } from './components/ToolbarActions';
 import { ThemeToggle } from './components/ThemeToggle';
-import { NODE_GROUPS } from './nodes/nodeRegistry';
 import './toolbar.css';
 
 export const PipelineToolbar = () => {
@@ -17,24 +17,7 @@ export const PipelineToolbar = () => {
         </div>
       </div>
 
-      <div className="vs-toolbar__palette">
-        {Object.entries(NODE_GROUPS).map(([group, nodes]) => (
-          <div className="vs-toolbar__group" key={group}>
-            <span className="vs-toolbar__group-label">{group}</span>
-            <div className="vs-toolbar__chips">
-              {nodes.map((node) => (
-                <DraggableNode
-                  key={node.type}
-                  type={node.type}
-                  label={node.label}
-                  icon={node.icon}
-                  category={node.category}
-                />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+      <NodePalette />
 
       <div className="vs-toolbar__right">
         <ThemeToggle />
